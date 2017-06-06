@@ -1,0 +1,36 @@
+{% extends 'dashboard.html' %}
+
+{% load bootstrap3 %}
+
+
+{% block title %}Delete Recall | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div style="background-color: #0D96FF !important" class="container-fluid">
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-xs-12">
+			<h1><b>Delete Recall</b></h1>
+			</div>
+		</div>
+	</div>
+	<br>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6 col-md-6">
+			<form method="POST" action="">
+			{% csrf_token %}
+			<h3>Are you sure you want to delete a recall for "{{ schedule }}"?</h3>
+			{% buttons %}
+		    	<button type="submit" class="btn btn-danger">
+		      		{% bootstrap_icon "remove" %} Delete
+		    	</button>
+		  	{% endbuttons %}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

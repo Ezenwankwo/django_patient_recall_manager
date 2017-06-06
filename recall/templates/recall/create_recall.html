@@ -1,0 +1,49 @@
+{% extends 'dashboard.html' %}
+
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+{% block title %}Create Recall | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div style="background-color: #0D96FF !important" class="container-fluid">
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-xs-12">
+			<h1><b>Create Recall</b></h1>
+			<h3>Today is {% now "D d M Y" %}: {% now "H:i" %}</h3>
+			</div>
+		</div>
+	</div>
+	<br>
+</div>
+			
+
+<div class="container"><br>
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" class="form-group">
+			{% if messages %}
+			{% bootstrap_javascript jquery=1 %}
+			{% bootstrap_messages %}
+			{% endif %}
+			<form method="POST" action="{% url 'recall:create_recall' %}" class="form">
+			{% bootstrap_form form layout='inline' show_help=True size='small' %}
+			{% csrf_token %}
+			{% buttons %}
+		    	<button type="submit" class="btn btn-success">
+		      		{% bootstrap_icon "plus" %} Create
+		    	</button>
+		  	{% endbuttons %}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
