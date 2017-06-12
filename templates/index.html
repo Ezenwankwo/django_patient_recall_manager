@@ -2,37 +2,89 @@
 
 {% block content %}
 <!-- Main jumbotron for a primary marketing message or call to action -->
-	<div style="background:#0D96FF !important" class="jumbotron">
-	  <div class="container">
-		<span class="text-success"><h1>Boost Recalls</h1></span>
-		<p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-		<p><a class="btn btn-danger btn-lg" href="{% url 'recall:create_recall' %}" role="button">Learn more &raquo;</a></p>
-	  </div>
-	</div>
+	<div class="container-fluid">
+        <div class="row">
+            <div style="background-color: #48E4FF !important;" class="jumbotron">
+                <h1>Built For Hospitals And Clinics</h1>
+                {% load staticfiles %}
+                <img src="{% static 'img/jumbotron.png' %}" style="width: 100%;" />
+                <p>Patient Recall Manager is an innovative and intuitive application designed to effectively manage hospital/clinic patient recall process.</p>
+                <p><a href="{% url 'recall:create_recall' %}" class="btn btn-danger btn-lg">CONTACT US</a></p>
+            </div>
+        </div>
+    </div> 
+    <div class="container">
+    	<div class="row">
+        	<div style="text-align: center;" class="col-md-12">
+        		<h1 class="text-primary">It's time to rethink patient recall management</h1>
+        		<p class="lead">Effective patient recall makes absolute clinical and business sense. Whether your goal is to improve clinical care or boast practice revenue, effective patient recall management is at the heart of it all.</p>
+        	</div>		
+        </div>
+    </div><br>
 
-	 <div class="container">
-	  <!-- Example row of columns -->
-	  <div class="row">
-		<div class="col-md-4">
-		  <h2>Heading</h2>
-		  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-		  <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-		</div>
-		<div class="col-md-4">
-		  <h2>Heading</h2>
-		  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-		  <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-	   </div>
-		<div class="col-md-4">
-		  <h2>Heading</h2>
-		  <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-		  <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-		</div>
-		</div>
-
-		<hr>
-	 </div> <!-- /container -->
-
+    <div class="jumbotron">
+     	<div class="container">
+     		<h2>Create recalls easily</h2><br>
+	    	<div class="row">
+	    		<div style="text-align: left;" class="col-sm-6">
+	    		<p>creating recalls is not the same as simply creating an appointment. Following a visit, an <i class="text-primary">On Schedule</i> recall is created with associated information such as the summary of the patient visit, and the reason for the patient recall. This is part of what makes recall more than just an appointment booking process.</p>
+	    		<p>After sending a recall reminder on the recall date, <i class="text-primary">A Reminder</i> recall is created for a subsequent future date. This reminder recall can be updated untill the patients next visit where a new on schedule recall will be created.</p>
+	    		</div>
+	        	<div class="col-sm-6">
+	        	{% load staticfiles %}
+	        	<img src="{% static 'img/jumbotron2.png' %}" style="width: 50%;" />	
+	        	</div>
+	    	</div>
+	    </div>
+    </div>
+    <div style="background-color: #fff;" class="jumbotron">
+    	<div class="container">
+    		<h2>View daily recalls</h2><br>
+       		<div class="row">
+        		<div class="col-sm-6">
+        		{% load staticfiles %}
+     			<img src="{% static 'img/jumbotron3.png' %}" style="width: 50%;" />
+        		</div>
+        		<div style="text-align: left;" class="col-sm-6">
+        		<p>With our patient recall manager, its goodbye to manually trying to sort through your recall list on a daily basis.</p>
+        		<p>On creation, a recall is automatically added to your recall list and sorted according to the date of recall.</p>	
+        		<p>This way, you always find the recalls for the day on top of the list. this saves you the time and energy spent manually trying to sort through your list.</p>
+        		<p>Manaully sorting through your recalls is primarily responsible for the ineffectiveness in many recall systems.</p>
+        		</div>
+        	</div>
+       </div>
+    </div>
+    <div class="jumbotron">
+    	<div class="container">
+    		<h2>Patient recall/management history at your fingertips</h2><br>
+       		<div class="row">
+        		<div style="text-align: left;" class="col-sm-6">
+        		<p>Our patient recall manager allows you to search and view the recall history for every patient.</p>
+        		<p>This allows you have information about the patient management timeline. By clicking on the patients ID, you can access the recall detail page, where more information such as the summary of the patient's visit, date of previous visit, reason for recall and the patient phone number. This functionality allows our recall manager suffice as a <i class="text-primary">simplified EHR system.</i></p>
+        		</div>
+        		<div class="col-sm-6">
+        		{% load static %}
+        		<img src="{% static 'img/jumbotron4.png' %}" style="width: 50%;" />	
+        		</div>
+        	</div>
+    	</div>
+    </div>
+    <div class="container">
+    	<div class="row">
+        	<div style="text-align: center;" class="col-md-12">
+        		<h2 class="text-primary">Patient recall manager is a web application</h2>
+        		<p class="lead">This means you can access your recall manager from any device and from any location, even from the comfort of your home!</p>
+        	</div>		
+        </div>
+    </div><br>
+    <div style="background-color:  #48E4FF;" class="container-fluid">
+    	<div class="row">
+        	<div style="text-align: center;" class="col-sm-12">
+        		<h2>Let us customise our recall manager for your practice</h2>
+        		<p class="lead">we have an incredible team to provide the support you need</p>
+        	</div>		
+        </div>
+    </div><br>
 
 
 {% endblock %}

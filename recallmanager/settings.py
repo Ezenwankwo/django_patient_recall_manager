@@ -25,7 +25,7 @@ SECRET_KEY = 'i#zm1tja%7(o@90j((pld#e7nm29s^#^!^yl^s7acg%h%875v+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dry-wildwood-56761.herokuapp.com']
+ALLOWED_HOSTS = ['dry-wildwood-56761.herokuapp.com',  '127.0.0.1']
 
 
 # Application definition
@@ -133,3 +133,12 @@ EMAIL_PORT = 1025
 
 
 
+# Heroku: Update database configuration from $DATABASE_URL.
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+
+# Simplified static file serving.
+https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
