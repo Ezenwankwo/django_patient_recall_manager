@@ -1,12 +1,31 @@
-{% extends 'dashboard.html' %}
+{% extends 'layout.html' %}
+
+{% load bootstrap3 %}
+
+
+
 
 {% block title %}Contact | {{ block.super }}{% endblock %}
+{% load bootstrap3 %}
 
 {% block content %}
-<h1>Contact</h1>
-<form role="form" action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-</form>
+<div style="background-color: #48E4FF !important;" class="jumbotron">
+	<div class="container">
+		<div class="row">
+			<div>
+				<h1>Contact Us</h1>
+
+				<form class="form-inline" role="form" action="{% url 'recall:contact' %}" method="post">
+					{% csrf_token %}
+					{% for field in form %}
+					<div class="form-group">
+				    {% bootstrap_field field show_label=True placeholder=False %}
+					</div>
+					{% endfor %}
+					<input type="submit" class="btn btn-success" value="Submit" />
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

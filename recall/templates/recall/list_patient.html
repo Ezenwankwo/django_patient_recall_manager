@@ -1,0 +1,51 @@
+{% extends 'dashboard.html' %}
+
+
+
+{% block content %}
+
+<div style="background:#0D96FF !important" class="container-fluid">
+    <br>
+    <div class="container">
+        <div class="row">
+           <h1><b>View Patients</b></h1>
+           <form method="GET" action="">
+             <input type="text" class="form-control input-md" name="q" placeholder="Enter Card Number or Name" value="{{ request.GET.q }}"/>
+             <input type="submit" value="Search" class="btn btn-success">  
+           </form>
+       </div>
+    </div>
+    <br>
+</div>
+
+<br>
+
+<div class="container">
+<div  class="table-responsive" class="row">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr class="success">
+        <th><span>Card Number</span></th>
+        <th><span>NAME</span></th>
+        <th><span>Phone</span></th>
+        <th class="text-center"><span>ACTIONS</span></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for patient in patients %}  
+      <tr>
+        <td>{{ patient.card_number }}</td>
+        <td><a href="{{ patient.get_absolute_url }}">{{ patient.patient_name }}</a></td>
+        <td>{{ patient.phone_number }}</td>
+        <td class="text-center">
+            <a class="btn btn-info btn-xs" href="{% url 'recall:patient_update' patient.pk %}"><span class="glyphicon glyphicon-edit"></span>Edit</a>
+            <a class="btn btn-danger btn-xs" href="{% url 'recall:patient_delete' patient.pk %}"><span class="glyphicon glyphicon-remove"></span>Del</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+
+{% endblock %}

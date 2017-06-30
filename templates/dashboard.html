@@ -14,7 +14,7 @@
 
     <!-- Add additional CSS in static file -->
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/recall.css' %}">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,7 +24,7 @@
     <![endif]-->
   </head>
   <body>
-    <nav style="background:#01092B !important" class="navbar navbar-inverse navbar-fixed-top">
+   <nav style="background:#01092B !important" class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-slide-dropdown">
@@ -35,10 +35,21 @@
           </button>
           <a class="navbar-brand" href="{% url 'home' %}">Patient Recall Manager</a>
         </div>
-        <div class="collapse navbar-collapse" id="bs-slide-dropdown">
+         <div class="collapse navbar-collapse" id="bs-slide-dropdown">
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'recall:create_recall' %}">create recall</a></li>
-                <li><a href="{% url 'recall:view_recall' %}">view recalls</a></li>
+                <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Patient<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                       <li><a href="{% url 'recall:add_patient' %}">Add patient</a></li>
+                       <li><a href="{% url 'recall:patient_list' %}">View patient</a></li> 
+                    </ul>
+                </li>
+                 <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Recall<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                       <li><a href="{% url 'recall:create_recall' %}">Create recall</a></li>
+                       <li><a href="{% url 'recall:view_recall' %}">View upcoming recall</a></li>
+                       <li><a href="{% url 'recall:past_recall' %}">View past recall</a></li>  
+                    </ul>
+                </li>
               </ul>
         </div>
         </div>

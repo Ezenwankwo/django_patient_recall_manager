@@ -1,0 +1,31 @@
+{% extends 'dashboard.html' %}
+
+{% load bootstrap %}
+
+{% block content %}
+
+<div style="background-color: #0D96FF !important" class="container-fluid">
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-xs-12">
+			<h1><b>Update Patient</b></h1>
+			</div>
+		</div>
+	</div>
+	<br>
+</div><br>
+
+<div class="container">
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+	<form method="POST" action="{% url 'recall:add_patient' %}" class="form">
+		{{ form|bootstrap }}
+		{% csrf_token %}
+		<input type="submit" value="Update" class="btn btn-success"> 
+	</form>
+</div>
+</div>
+</div><br>
+
+{% endblock %}

@@ -20,8 +20,10 @@ from django.views.generic import TemplateView
 
 from recall import urls as recall_url
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^recall/', include(recall_url)),
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]

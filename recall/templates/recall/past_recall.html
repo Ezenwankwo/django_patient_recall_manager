@@ -8,7 +8,7 @@
     <br>
     <div class="container">
         <div class="row">
-           <h1><b>View Recalls</b></h1>
+           <h1><b>View Past Recalls</b></h1>
            <form method="GET" action="">
              <input type="text" class="form-control input-md" name="q" placeholder="Enter Name or Date of Recall(YYYY-MM-DD)" value="{{ request.GET.q }}"/>
              <input type="submit" value="Search" class="btn btn-success">  
@@ -23,7 +23,7 @@
 <div class="container">
 <div class="row">
 <div class="col-sm-10 col-sm-offset-1">
-  {% if not view_recall %}
+  {% if not past_recall %}
     <p><strong>You Have No Recalls.</strong> Why not <a href="{% url 'recall:create_recall' %}">create one?</a></p>
   {% endif %}
 </div>
@@ -34,13 +34,14 @@
       <tr class="success">
         <th><span>NAME</span></th>
         <th><span>RECALL DATE</span></th>
-        <th><span>RECALL STATUS</span></th>
+        <th><span>RECALL DATE</span></th>
         <th class="text-center"><span>ACTIONS</span></th>
       </tr>
     </thead>
     <tbody>
-    {% for schedule in view_recall|dictsort:"date_of_recall" %}
-    {% if schedule.is_past_due %}   
+    {% for schedule in past_recall|dictsortreversed:"date_of_recall" %}
+    {% if schedule.new_recall_date %}   
+    
       <tr>
         <td><a href="{{ schedule.get_absolute_url }}">{{ schedule.patient }}</a></td>
         <td>{{ schedule.date_of_recall }}</td>
@@ -50,6 +51,7 @@
             <a class="btn btn-danger btn-xs" href="{% url 'recall:delete_recall' schedule.pk %}"><span class="glyphicon glyphicon-remove"></span>Del</a>
         </td>
       </tr>
+
     {% endif %}
     {% endfor %}
     </tbody>
@@ -57,20 +59,20 @@
 
 {% if is_paginated %}
   <ul class="pagination">
-    {% if view_recall.has_previous %}
-      <li><a href="?page={{ view_recall.previous_page_number }}">&laquo;</a></li>
+    {% if past_recall.has_previous %}
+      <li><a href="?page={{ past_recall.previous_page_number }}">&laquo;</a></li>
     {% else %}
       <li class="disabled"><span>&laquo;</span></li>
     {% endif %}
     {% for i in paginator.page_range %}
-      {% if view_recall.number == i %}
+      {% if past_recall.number == i %}
         <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
       {% else %}
         <li><a href="?page={{ i }}">{{ i }}</a></li>
       {% endif %}
     {% endfor %}
-    {% if view_recall.has_next %}
-      <li><a href="?page={{ view_recall.next_page_number }}">&raquo;</a></li>
+    {% if past_recall.has_next %}
+      <li><a href="?page={{ past_recall.next_page_number }}">&raquo;</a></li>
     {% else %}
       <li class="disabled"><span>&raquo;</span></li>
     {% endif %}

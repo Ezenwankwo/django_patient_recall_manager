@@ -1,7 +1,7 @@
 {% extends 'dashboard.html' %}
 
 
-{% block title %}Detail Recall | {{ block.super }}{% endblock %}
+{% block title %}Patient Detail | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div style="background-color: #0D96FF !important" class="container-fluid">
@@ -9,7 +9,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4 col-md-6 col-xs-12">
-			<h1><b>Detail Recall</b></h1>
+			<h1><b>Patient Detail</b></h1>
 			</div>
 		</div>
 	</div>
@@ -23,52 +23,76 @@
 <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
 <div class="panel panel-info">
   <div class="panel-heading">
+    <h3 class="panel-title">Card Number</h3>
+  </div>
+  <div class="panel-body">
+    {{ patients.card_number }} 
+  </div>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">
     <h3 class="panel-title">Name</h3>
   </div>
   <div class="panel-body">
-    {{ schedule.patient }}
+    {{ patients.patient_name }}
   </div>
 </div>
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">Date of Visit</h3>
+    <h3 class="panel-title">Sex</h3>
   </div>
   <div class="panel-body">
-    {{ schedule.date_of_visit }}
+    {{ patients.sex }}
   </div>
 </div>
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">Summary of Visit</h3>
+    <h3 class="panel-title">Date of Birth</h3>
   </div>
   <div class="panel-body">
-    {{ schedule.summary_of_visit }}
+    {{ patients.date_of_birth }}
   </div>
 </div>
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">Date of Recall</h3>
+    <h3 class="panel-title">Phone Number</h3>
   </div>
   <div class="panel-body">
-    {{ schedule.date_of_recall }}
+    {{ patients.phone_number }}
   </div>
 </div>
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">Reason for Recall</h3>
+    <h3 class="panel-title">Email</h3>
   </div>
   <div class="panel-body">
-    {{ schedule.reason_for_recall }}
+    {{ patients.email }}
   </div>
 </div>
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">Recall Status</h3>
+    <h3 class="panel-title">Address</h3>
   </div>
   <div class="panel-body">
-    {{ schedule.recall_status }}
+    {{ patients.address }}
   </div>
 </div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Occupation</h3>
+  </div>
+  <div class="panel-body">
+    {{ patients.occupation }}
+  </div>
+ </div>
+ <div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Health Management Organisation</h3>
+  </div>
+  <div class="panel-body">
+    {{ patients.hmo }}
+  </div>
+ </div>
  </div>
 </div>
 </div>

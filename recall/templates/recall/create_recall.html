@@ -1,6 +1,7 @@
 {% extends 'dashboard.html' %}
 
 {% load bootstrap3 %}
+{% load bootstrap %}
 
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
@@ -35,13 +36,9 @@
 			{% bootstrap_messages %}
 			{% endif %}
 			<form method="POST" action="{% url 'recall:create_recall' %}" class="form">
-			{% bootstrap_form form layout='inline' show_help=True size='small' %}
+			{{ form|bootstrap }}
 			{% csrf_token %}
-			{% buttons %}
-		    	<button type="submit" class="btn btn-success">
-		      		{% bootstrap_icon "plus" %} Create
-		    	</button>
-		  	{% endbuttons %}
+			<input type="submit" value="Add Patient" class="btn btn-success"> 
 			</form>
 		</div>
 	</div>

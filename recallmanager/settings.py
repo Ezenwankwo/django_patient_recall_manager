@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap3',
+    'bootstrapform',
     'recall',
     
 ]
@@ -127,13 +128,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
-DEFAULT_FROM_EMAIL = 'testing@example.com'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS = False 
-EMAIL_PORT = 1025
-
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'onyeka.ezenwankwo@gmail.com'
+EMAIL_HOST_PASSWORD = 'charity24'
+EMAIL_USE_TLS = True 
+EMAIL_PORT = 587
 
 
 # Heroku: Update database configuration from $DATABASE_URL.
@@ -145,3 +144,5 @@ DATABASES['default'].update(db_from_env)
 # Simplified static file serving.
 #https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+LOGIN_REDIRECT_URL = '/recall/add_patient/'
