@@ -70,13 +70,6 @@ class Schedule(models.Model):
 
 
 	
-	def is_past_due(self):
-		return date.today() <= self.date_of_recall
-
-	def new_recall_date(self):
-		return date.today() > self.date_of_recall
-
-	
 
 	
 

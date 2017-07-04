@@ -25,7 +25,7 @@ SECRET_KEY = 'i#zm1tja%7(o@90j((pld#e7nm29s^#^!^yl^s7acg%h%875v+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dry-wildwood-56761.herokuapp.com',  '127.0.0.1']
+ALLOWED_HOSTS = ['dry-wildwood-56761.herokuapp.com', 'patientrecallmanager.herokuapp.com',  '127.0.0.1']
 
 
 # Application definition

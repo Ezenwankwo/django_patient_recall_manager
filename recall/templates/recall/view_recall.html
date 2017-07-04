@@ -32,15 +32,14 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr class="success">
-        <th><span>NAME</span></th>
-        <th><span>RECALL DATE</span></th>
-        <th><span>RECALL STATUS</span></th>
-        <th class="text-center"><span>ACTIONS</span></th>
+        <th><span>Name</span></th>
+        <th><span>Recall Date</span></th>
+        <th><span>Recall Status</span></th>
+        <th class="text-center"><span>Actions</span></th>
       </tr>
     </thead>
     <tbody>
-    {% for schedule in view_recall|dictsort:"date_of_recall" %}
-    {% if schedule.is_past_due %}   
+    {% for schedule in view_recall|dictsort:"date_of_recall" %}  
       <tr>
         <td><a href="{{ schedule.get_absolute_url }}">{{ schedule.patient }}</a></td>
         <td>{{ schedule.date_of_recall }}</td>
@@ -50,32 +49,27 @@
             <a class="btn btn-danger btn-xs" href="{% url 'recall:delete_recall' schedule.pk %}"><span class="glyphicon glyphicon-remove"></span>Del</a>
         </td>
       </tr>
-    {% endif %}
     {% endfor %}
     </tbody>
   </table>
 
-{% if is_paginated %}
-  <ul class="pagination">
-    {% if view_recall.has_previous %}
-      <li><a href="?page={{ view_recall.previous_page_number }}">&laquo;</a></li>
-    {% else %}
-      <li class="disabled"><span>&laquo;</span></li>
-    {% endif %}
-    {% for i in paginator.page_range %}
-      {% if view_recall.number == i %}
-        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-      {% else %}
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
-      {% endif %}
-    {% endfor %}
-    {% if view_recall.has_next %}
-      <li><a href="?page={{ view_recall.next_page_number }}">&raquo;</a></li>
-    {% else %}
-      <li class="disabled"><span>&raquo;</span></li>
-    {% endif %}
-  </ul>
-{% endif %}
+ {% if is_paginated %}
+ 
+      <div class="pagination">
+          <span class="page-links">
+              {% if page_obj.has_previous %}
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="page-current">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+              {% if page_obj.has_next %}
+                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+              {% endif %}
+          </span>
+      </div>
+
+  {% endif %}
   </div>
   </div>
   </div>

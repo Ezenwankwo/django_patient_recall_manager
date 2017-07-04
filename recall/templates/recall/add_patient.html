@@ -18,7 +18,7 @@
 
 <div class="container">
 <div class="row">
-<div class="col-md-6 col-md-offset-3">
+<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" class="form-group">
 	<form method="POST" action="{% url 'recall:add_patient' %}" class="form">
 		{{ form|bootstrap }}
 		{% csrf_token %}

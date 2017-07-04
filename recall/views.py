@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db.models import Q
+from datetime import date 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy 
@@ -35,6 +36,7 @@ class PatientListView(ListView):
 	model = Patient
 	template_name = 'recall/list_patient.html'
 	context_object_name = 'patients'
+	paginate_by = 1
 
 	def get_queryset(self, *args, **kwargs):
 		queryset_list = Patient.objects.all()
@@ -68,7 +70,7 @@ class PatientUpdateView(SuccessMessageMixin, UpdateView):
 	model = Patient
 	template_name = 'recall/patient_update.html'
 	fields = ['card_number', 'patient_name', 'sex', 'date_of_birth', 'phone_number', 'email', 'address', 'occupation', 'hmo']
-	success_url = reverse_lazy('recall:patient_detail') 
+	success_url = reverse_lazy('recall:patient_list') 
 	success_message = 'Patient successfully added'
 
 
@@ -90,10 +92,12 @@ class ViewScheduleView(LoginRequiredMixin, ListView):
 	model = Schedule
 	template_name = 'recall/view_recall.html'
 	context_object_name = 'view_recall' 
-	#paginate_by = 5
+	paginate_by = 2
+	queryset_list = Schedule.objects.exclude(date_of_recall__lt=date.today())
 
+	
 	def get_queryset(self, *args, **kwargs):
-		queryset_list = Schedule.objects.all()
+		queryset_list = Schedule.objects.exclude(date_of_recall__lt=date.today())
 		query = self.request.GET.get("q")
 		
 		if query:
@@ -103,14 +107,18 @@ class ViewScheduleView(LoginRequiredMixin, ListView):
 				).distinct()
 		return queryset_list
 
+
 class PastRecallView(ListView):
 
 	model = Schedule
 	template_name = 'recall/past_recall.html'
 	context_object_name = 'past_recall'
+	paginate_by = 5
+	queryset_list = Schedule.objects.filter(date_of_recall__lt=date.today())
+
 
 	def get_queryset(self, *args, **kwargs):
-		queryset_list = Schedule.objects.all()
+		queryset_list = Schedule.objects.filter(date_of_recall__lt=date.today())
 		query = self.request.GET.get("q")
 		
 		if query:

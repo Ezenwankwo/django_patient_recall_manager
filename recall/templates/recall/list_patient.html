@@ -26,9 +26,9 @@
     <thead>
       <tr class="success">
         <th><span>Card Number</span></th>
-        <th><span>NAME</span></th>
+        <th><span>Name</span></th>
         <th><span>Phone</span></th>
-        <th class="text-center"><span>ACTIONS</span></th>
+        <th class="text-center"><span>Actions</span></th>
       </tr>
     </thead>
     <tbody>
@@ -46,6 +46,21 @@
     </tbody>
   </table>
 </div>
+{% if is_paginated %}
+      <div class="pagination">
+          <span class="page-links">
+              {% if page_obj.has_previous %}
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="page-current">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+              {% if page_obj.has_next %}
+                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+              {% endif %}
+          </span>
+      </div>
+{% endif %}
 </div>
 
 {% endblock %}
